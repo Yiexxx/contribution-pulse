@@ -134,8 +134,9 @@ def calc_streaks(days):
     longest = 0
     cur = 0
     prev = None
-    for d in sorted(days):
-        if days[d] > 0:
+    for key in sorted(days):
+        if days[key] > 0:
+            d = date.fromisoformat(key)
             cur = cur + 1 if prev is not None and (d - prev).days == 1 else 1
             longest = max(longest, cur)
             prev = d
