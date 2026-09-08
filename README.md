@@ -19,12 +19,19 @@
 
 在本地终端运行 `python pulse.py`,还能直接看到彩色的热力图和统计。
 
+主页同款统计卡片(自托管,永不限流):
+
+```
+https://raw.githubusercontent.com/Yiexxx/contribution-pulse/main/stats-card.svg
+```
+
 ## 仓库结构
 
 ```
 contribution-pulse/
 ├── pulse.py                            # 主工具(零依赖,只要 Python 3)
 ├── LOG.md                              # 每日快照日志(Action 自动追加)
+├── stats-card.svg                      # 自托管统计卡片(每天重新生成)
 ├── history/stats.json                  # 结构化的历史数据
 └── .github/workflows/daily-pulse.yml   # 每日 08:23(北京时间)定时任务
 ```

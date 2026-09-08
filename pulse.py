@@ -149,10 +149,13 @@ def calc_streaks(days):
     return current, longest
 
 
-def render_heatmap(days, use_color):
-    """按周列(GitHub 同款,周日开头)渲染一年份热力图。"""
+def build_weeks(days):
+    """把 {日期字符串: 次数} 整理成以周为列、周日开头的 7 行网格。
+
+    返回 (weeks, levels):每个 week 是长度为 7 的列表,网格外的位置是 None。
+    """
     if not days:
-        return "(没有拿到贡献数据)"
+        return [], {}
     start = date.fromisoformat(min(days))
     end = date.fromisoformat(max(days))
     counts = {}
@@ -164,7 +167,7 @@ def render_heatmap(days, use_color):
     levels = compute_levels(counts)
 
     weeks = []
-    week = [-1] * ((start.weekday() + 1) % 7)  # 第一周左侧补位
+    week = [None] * ((start.weekday() + 1) % 7)  # 第一周左侧补位
     for key in sorted(counts):
         week.append(levels[key])
         if len(week) == 7:
@@ -172,13 +175,21 @@ def render_heatmap(days, use_color):
             week = []
     if week:
         weeks.append(week)
+    return weeks, levels
+
+
+def render_heatmap(days, use_color):
+    """按周列(GitHub 同款,周日开头)渲染一年份热力图。"""
+    if not days:
+        return "(没有拿到贡献数据)"
+    weeks, _ = build_weeks(days)
 
     lines = []
     for row in range(7):
         line = ""
         for w in weeks:
-            lv = w[row] if row < len(w) else -1
-            if lv < 0:
+            lv = w[row]
+            if lv is None:
                 line += " "
             elif use_color:
                 r, g, b = LEVEL_COLORS[lv]
@@ -192,8 +203,52 @@ def render_heatmap(days, use_color):
     return "\n".join(lines)
 
 
-def write_log(total, current, longest, days):
-    """把当天快照写入 LOG.md(按日去重)和 history/stats.json。"""
+SVG_DOTS = ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"]
+FONT = "Segoe UI,Helvetica,Arial,sans-serif"
+
+
+def render_stats_svg(login, total, current, longest, days):
+    """生成自托管的统计卡片 SVG:标题 + 三个指标 + 一年份热力图。"""
+    weeks, _ = build_weeks(days)
+    cell, gap = 10, 3
+    left, top = 24, 100
+    width = max(left * 2 + len(weeks) * (cell + gap) - gap, 560)
+    height = 216
+
+    parts = [
+        '<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d">'
+        % (width, height, width, height),
+        '<rect width="100%" height="100%" rx="12" fill="#0d1117" stroke="#30363d"/>',
+        '<text x="%d" y="44" font-family="%s" font-size="17" font-weight="600" fill="#e6edf3">@%s · GitHub 贡献脉搏</text>'
+        % (left, FONT, login),
+        '<text x="%d" y="208" font-family="%s" font-size="11" fill="#8b949e">更新于 %s · 每天 08:23 自动刷新</text>'
+        % (left, FONT, date.today().isoformat()),
+    ]
+    x = left
+    for label, value, color in (
+        ("近一年贡献", format(total, ","), "#39d353"),
+        ("当前连续", str(current), "#7ee787"),
+        ("最长连续", str(longest), "#7ee787"),
+    ):
+        parts.append('<text x="%d" y="76" font-family="%s" font-size="13" fill="#8b949e">%s</text>'
+                     % (x, FONT, label))
+        parts.append('<text x="%d" y="76" font-family="%s" font-size="15" font-weight="600" fill="%s">%s</text>'
+                     % (x + len(label) * 13 + 8, FONT, color, value))
+        x += len(label) * 13 + len(value) * 9 + 42
+
+    for ci, w in enumerate(weeks):
+        for ri, lv in enumerate(w):
+            if lv is None:
+                continue
+            parts.append('<rect x="%d" y="%d" width="%d" height="%d" rx="2" fill="%s"/>'
+                         % (left + ci * (cell + gap), top + ri * (cell + gap), cell, cell, SVG_DOTS[lv]))
+
+    parts.append("</svg>")
+    return "\n".join(parts)
+
+
+def write_log(login, total, current, longest, days):
+    """把当天快照写入 LOG.md(按日去重)和 history/stats.json,并生成 stats-card.svg。"""
     today = date.today().isoformat()
     today_count = days.get(today, 0)
     row = "| %s | %s | %d | %d | %s %d |" % (
@@ -242,6 +297,9 @@ def write_log(total, current, longest, days):
         json.dump(entries[-400:], f, ensure_ascii=False, indent=2)
         f.write("\n")
 
+    with open("stats-card.svg", "w", encoding="utf-8") as f:
+        f.write(render_stats_svg(login, total, current, longest, days))
+
 
 def main():
     ap = argparse.ArgumentParser(description="GitHub 贡献脉搏")
@@ -274,9 +332,9 @@ def main():
     print(render_heatmap(days, use_color))
 
     if args.log:
-        write_log(total, current, longest, days)
+        write_log(login, total, current, longest, days)
         print()
-        print("已写入 LOG.md 和 history/stats.json")
+        print("已写入 LOG.md、history/stats.json 和 stats-card.svg")
 
 
 if __name__ == "__main__":
