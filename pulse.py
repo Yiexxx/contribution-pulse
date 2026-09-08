@@ -188,7 +188,7 @@ def render_heatmap(days, use_color):
     for row in range(7):
         line = ""
         for w in weeks:
-            lv = w[row]
+            lv = w[row] if row < len(w) else None
             if lv is None:
                 line += " "
             elif use_color:
