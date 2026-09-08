@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false   # 不保留机器人凭据,推送时用我们自己的 token
 
       - name: 记录今天的贡献快照
         env:
