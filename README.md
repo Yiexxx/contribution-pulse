@@ -30,10 +30,13 @@ https://raw.githubusercontent.com/Yiexxx/contribution-pulse/main/stats-card.svg
 ```
 contribution-pulse/
 ├── pulse.py                            # 主工具(零依赖,只要 Python 3)
+├── daily_quote.py                      # 每日编程语录生成器
 ├── LOG.md                              # 每日快照日志(Action 自动追加)
+├── QUOTES.md                           # 每日语录日志(早晚各一条)
 ├── stats-card.svg                      # 自托管统计卡片(每天重新生成)
+├── quote-card.svg                      # 今日语录卡片
 ├── history/stats.json                  # 结构化的历史数据
-└── .github/workflows/daily-pulse.yml   # 每日 08:23(北京时间)定时任务
+└── .github/workflows/                  # daily-pulse + daily-quote 定时任务
 ```
 
 ## 本地使用

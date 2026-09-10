@@ -1,0 +1,35 @@
+name: daily quote
+
+on:
+  schedule:
+    - cron: "17 1 * * *"   # 北京时间 09:17,早间语录
+    - cron: "41 13 * * *"  # 北京时间 21:41,晚间语录
+  workflow_dispatch:        # 允许手动触发
+
+jobs:
+  quote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false   # 推送时用我们自己的 token
+
+      - name: 抽取今日语录
+        run: python3 daily_quote.py
+
+      - name: 以仓库主人身份提交并推送
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          USER_JSON=$(curl -s -H "Authorization: Bearer $GH_PAT" https://api.github.com/user)
+          LOGIN=$(echo "$USER_JSON" | jq -r .login)
+          USERID=$(echo "$USER_JSON" | jq -r .id)
+          git config user.name  "$LOGIN"
+          git config user.email "${USERID}+${LOGIN}@users.noreply.github.com"
+          git add QUOTES.md quote-card.svg
+          if git diff --cached --quiet; then
+            echo "本轮语录已经记录过了,没有新变化"
+          else
+            git commit -m "quote: $(date -u +%F) programming quote"
+            git push https://x-access-token:${GH_PAT}@github.com/${GITHUB_REPOSITORY}.git HEAD:main
+          fi
