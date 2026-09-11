@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="740" height="180" viewBox="0 0 740 180">
 <rect width="100%%" height="100%%" rx="12" fill="#0d1117" stroke="#30363d"/>
 <text x="28" y="72" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="44" fill="#39d353">❝</text>
-<text x="86" y="108" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="16" fill="#e6edf3">任何傻瓜都能写出计算机能懂的代码,好的程序员写的是人能懂的代码。</text>
-<text x="712" y="138" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="14" fill="#7ee787" text-anchor="end">—— Martin Fowler</text>
-<text x="28" y="160" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">语录 #2 / 42 · 2026-09-11 🌅 早间 · 每天早晚各更新一条</text>
+<text x="86" y="108" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="16" fill="#e6edf3">先让它能跑,再让它跑对,最后让它跑快。</text>
+<text x="712" y="138" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="14" fill="#7ee787" text-anchor="end">—— Kent Beck</text>
+<text x="28" y="160" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">语录 #3 / 42 · 2026-09-11 🌆 午间 · 每天早晚各更新一条</text>
 </svg>
