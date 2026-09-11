@@ -63,7 +63,7 @@ def disp_width(s):
     return sum(2 if ord(c) > 127 else 1 for c in s)
 
 
-def wrap(text, max_units=72):
+def wrap(text, max_units=66):
     """按显示宽度折行:CJK 字符算 2 个单位,ASCII 算 1 个。"""
     lines, cur, w = [], "", 0
     for ch in text:
@@ -105,24 +105,43 @@ def already_today_slot(today, slot):
     return False
 
 
+def last_entry():
+    """从 QUOTES.md 最后一行恢复 (idx, 日期, 时段, 语录, 作者),用于只刷新卡片样式。"""
+    if not os.path.exists("QUOTES.md"):
+        return None
+    rows = []
+    with open("QUOTES.md", encoding="utf-8") as f:
+        for line in f:
+            if line.startswith("| ") and not line.startswith("| #") and not line.startswith("|--"):
+                rows.append(line)
+    if not rows:
+        return None
+    parts = rows[-1].strip().strip("|").split("|")
+    if len(parts) < 5:
+        return None
+    idx = parts[0].strip()
+    return (int(idx) if idx.isdigit() else 1,
+            parts[1].strip(), parts[2].strip(), parts[3].strip(), parts[4].strip())
+
+
 def render_card(idx, total, text, author, slot, today):
     lines = wrap(text)
-    width, height = 740, 150 + len(lines) * 30
+    width, height = 740, 158 + len(lines) * 34
     parts = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d">'
         % (width, height, width, height),
         '<rect width="100%%" height="100%%" rx="12" fill="#0d1117" stroke="#30363d"/>',
-        '<text x="28" y="72" font-family="%s" font-size="44" fill="#39d353">\u275d</text>' % FONT,
+        '<text x="28" y="74" font-family="%s" font-size="48" fill="#39d353">\u275d</text>' % FONT,
     ]
-    y = 108
+    y = 114
     for ln in lines:
-        parts.append('<text x="86" y="%d" font-family="%s" font-size="16" fill="#e6edf3">%s</text>'
+        parts.append('<text x="86" y="%d" font-family="%s" font-size="18" font-weight="600" fill="#ffffff">%s</text>'
                      % (y, FONT, esc(ln)))
-        y += 30
-    parts.append('<text x="712" y="%d" font-family="%s" font-size="14" fill="#7ee787" text-anchor="end">—— %s</text>'
+        y += 34
+    parts.append('<text x="712" y="%d" font-family="%s" font-size="15" font-weight="600" fill="#7ee787" text-anchor="end">—— %s</text>'
                  % (y, FONT, esc(author)))
-    parts.append('<text x="28" y="%d" font-family="%s" font-size="11" fill="#8b949e">语录 #%d / %d · %s %s · 每天早晚各更新一条</text>'
-                 % (height - 20, FONT, idx, total, today, slot))
+    parts.append('<text x="28" y="%d" font-family="%s" font-size="12" fill="#c9d1d9">语录 #%d / %d · %s %s · 每天早晚各更新一条</text>'
+                 % (height - 22, FONT, idx, total, today, slot))
     parts.append("</svg>")
     return "\n".join(parts)
 
@@ -134,7 +153,15 @@ def main():
     slot = "🌅 早间" if hour < 12 else ("🌆 午间" if hour < 18 else "🌙 晚间")
 
     if already_today_slot(today, slot):
-        print("%s %s 的语录已经记录过了,跳过" % (today, slot))
+        # 本时段已记录过:仍然重渲染卡片,让样式更新也能生效
+        last = last_entry()
+        if last:
+            idx, d, s, text, author = last
+            with open("quote-card.svg", "w", encoding="utf-8") as f:
+                f.write(render_card(idx, len(QUOTES), text, author, s, d))
+            print("%s %s 的语录已经记录过了,只刷新卡片样式" % (today, slot))
+        else:
+            print("%s %s 的语录已经记录过了,跳过" % (today, slot))
         return
 
     n = count_entries()

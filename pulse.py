@@ -221,7 +221,7 @@ def render_stats_svg(login, total, current, longest, days):
         '<rect width="100%" height="100%" rx="12" fill="#0d1117" stroke="#30363d"/>',
         '<text x="%d" y="44" font-family="%s" font-size="17" font-weight="600" fill="#e6edf3">@%s · GitHub 贡献脉搏</text>'
         % (left, FONT, login),
-        '<text x="%d" y="208" font-family="%s" font-size="11" fill="#8b949e">更新于 %s · 每天 08:23 自动刷新</text>'
+        '<text x="%d" y="208" font-family="%s" font-size="12" fill="#c9d1d9">更新于 %s · 每天 08:23 自动刷新</text>'
         % (left, FONT, date.today().isoformat()),
     ]
     x = left
@@ -230,7 +230,7 @@ def render_stats_svg(login, total, current, longest, days):
         ("当前连续", str(current), "#7ee787"),
         ("最长连续", str(longest), "#7ee787"),
     ):
-        parts.append('<text x="%d" y="76" font-family="%s" font-size="13" fill="#8b949e">%s</text>'
+        parts.append('<text x="%d" y="76" font-family="%s" font-size="13" fill="#c9d1d9">%s</text>'
                      % (x, FONT, label))
         parts.append('<text x="%d" y="76" font-family="%s" font-size="15" font-weight="600" fill="%s">%s</text>'
                      % (x + len(label) * 13 + 8, FONT, color, value))
