@@ -3,7 +3,7 @@
 <text x="24" y="44" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="17" font-weight="600" fill="#e6edf3">@Yiexxx · GitHub 贡献脉搏</text>
 <text x="24" y="208" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#c9d1d9">更新于 2026-09-11 · 每天 08:23 自动刷新</text>
 <text x="24" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#c9d1d9">近一年贡献</text>
-<text x="97" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#39d353">26</text>
+<text x="97" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#39d353">28</text>
 <text x="149" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#c9d1d9">当前连续</text>
 <text x="209" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#7ee787">4</text>
 <text x="252" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#c9d1d9">最长连续</text>
@@ -377,5 +377,5 @@
 <rect x="700" y="126" width="10" height="10" rx="2" fill="#39d353"/>
 <rect x="700" y="139" width="10" height="10" rx="2" fill="#0e4429"/>
 <rect x="700" y="152" width="10" height="10" rx="2" fill="#26a641"/>
-<rect x="700" y="165" width="10" height="10" rx="2" fill="#006d32"/>
+<rect x="700" y="165" width="10" height="10" rx="2" fill="#26a641"/>
 </svg>
