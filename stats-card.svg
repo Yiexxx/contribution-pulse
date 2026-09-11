@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="734" height="216" viewBox="0 0 734 216">
 <rect width="100%" height="100%" rx="12" fill="#0d1117" stroke="#30363d"/>
 <text x="24" y="44" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="17" font-weight="600" fill="#e6edf3">@Yiexxx · GitHub 贡献脉搏</text>
-<text x="24" y="208" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">更新于 2026-09-11 · 每天 08:23 自动刷新</text>
-<text x="24" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">近一年贡献</text>
-<text x="97" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#39d353">21</text>
-<text x="149" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">当前连续</text>
-<text x="209" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#7ee787">3</text>
-<text x="252" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">最长连续</text>
-<text x="312" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#7ee787">3</text>
+<text x="24" y="208" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#c9d1d9">更新于 2026-09-11 · 每天 08:23 自动刷新</text>
+<text x="24" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#c9d1d9">近一年贡献</text>
+<text x="97" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#39d353">26</text>
+<text x="149" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#c9d1d9">当前连续</text>
+<text x="209" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#7ee787">4</text>
+<text x="252" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#c9d1d9">最长连续</text>
+<text x="312" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#7ee787">4</text>
 <rect x="24" y="100" width="10" height="10" rx="2" fill="#161b22"/>
 <rect x="24" y="113" width="10" height="10" rx="2" fill="#161b22"/>
 <rect x="24" y="126" width="10" height="10" rx="2" fill="#161b22"/>
@@ -377,5 +377,5 @@
 <rect x="700" y="126" width="10" height="10" rx="2" fill="#39d353"/>
 <rect x="700" y="139" width="10" height="10" rx="2" fill="#0e4429"/>
 <rect x="700" y="152" width="10" height="10" rx="2" fill="#26a641"/>
-<rect x="700" y="165" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="700" y="165" width="10" height="10" rx="2" fill="#006d32"/>
 </svg>
