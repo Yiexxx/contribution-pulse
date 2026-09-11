@@ -31,5 +31,12 @@ jobs:
             echo "本轮语录已经记录过了,没有新变化"
           else
             git commit -m "quote: $(date -u +%F) programming quote"
-            git push https://x-access-token:${GH_PAT}@github.com/${GITHUB_REPOSITORY}.git HEAD:main
+            PUSH_URL="https://x-access-token:${GH_PAT}@github.com/${GITHUB_REPOSITORY}.git"
+            ok=0
+            for i in 1 2 3; do
+              if git push "$PUSH_URL" HEAD:main; then ok=1; break; fi
+              git pull --rebase "$PUSH_URL" main || break
+              sleep 3
+            done
+            [ "$ok" = "1" ] || { echo "推送失败"; exit 1; }
           fi
