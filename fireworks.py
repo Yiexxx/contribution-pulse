@@ -89,7 +89,8 @@ def main():
     parts = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d">'
         % (W, H, W, H),
-        '<rect width="100%%" height="100%%" rx="12" fill="#0d1117" stroke="#30363d"/>',
+        '<rect width="%d" height="%d" rx="12" fill="#0d1117" stroke="#30363d"/>'
+        % (W, H),
     ]
 
     # 背景星星(缓慢闪烁)

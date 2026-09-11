@@ -130,12 +130,13 @@ def render_card(idx, total, text, author, slot, today):
     parts = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d">'
         % (width, height, width, height),
-        '<rect width="100%%" height="100%%" rx="12" fill="#0d1117" stroke="#30363d"/>',
+        '<rect width="%d" height="%d" rx="12" fill="#0d1117" stroke="#30363d"/>'
+        % (width, height),
         '<text x="28" y="74" font-family="%s" font-size="48" fill="#39d353">\u275d</text>' % FONT,
     ]
     y = 114
     for ln in lines:
-        parts.append('<text x="86" y="%d" font-family="%s" font-size="18" font-weight="600" fill="#ffffff">%s</text>'
+        parts.append('<text x="86" y="%d" font-family="%s" font-size="18" font-weight="600" fill="#39d353">%s</text>'
                      % (y, FONT, esc(ln)))
         y += 34
     parts.append('<text x="712" y="%d" font-family="%s" font-size="15" font-weight="600" fill="#7ee787" text-anchor="end">—— %s</text>'
