@@ -33,5 +33,12 @@
     "current_streak": 4,
     "longest_streak": 4,
     "today": 0
+  },
+  {
+    "date": "2026-09-13",
+    "total_last_year": 35,
+    "current_streak": 5,
+    "longest_streak": 5,
+    "today": 0
   }
 ]
