@@ -88,3 +88,4 @@
 | 82 | 2026-10-20 | 🌆 午间 | 写文档的最好时机是写代码的时候,其次是现在。 | 佚名 |
 | 83 | 2026-10-21 | 🌅 早间 | 你以为的 bug,其实是 feature。 | 程序员的自我修养 |
 | 84 | 2026-10-21 | 🌆 午间 | Stay hungry, stay foolish. | Steve Jobs |
+| 85 | 2026-10-22 | 🌅 早间 | Talk is cheap. Show me the code. | Linus Torvalds |
