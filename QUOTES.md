@@ -89,3 +89,4 @@
 | 83 | 2026-10-21 | 🌅 早间 | 你以为的 bug,其实是 feature。 | 程序员的自我修养 |
 | 84 | 2026-10-21 | 🌆 午间 | Stay hungry, stay foolish. | Steve Jobs |
 | 85 | 2026-10-22 | 🌅 早间 | Talk is cheap. Show me the code. | Linus Torvalds |
+| 86 | 2026-10-22 | 🌆 午间 | 任何傻瓜都能写出计算机能懂的代码,好的程序员写的是人能懂的代码。 | Martin Fowler |
