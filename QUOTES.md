@@ -90,3 +90,4 @@
 | 84 | 2026-10-21 | 🌆 午间 | Stay hungry, stay foolish. | Steve Jobs |
 | 85 | 2026-10-22 | 🌅 早间 | Talk is cheap. Show me the code. | Linus Torvalds |
 | 86 | 2026-10-22 | 🌆 午间 | 任何傻瓜都能写出计算机能懂的代码,好的程序员写的是人能懂的代码。 | Martin Fowler |
+| 87 | 2026-10-23 | 🌅 早间 | 先让它能跑,再让它跑对,最后让它跑快。 | Kent Beck |
