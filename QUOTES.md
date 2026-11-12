@@ -131,3 +131,4 @@
 | 125 | 2026-11-11 | 🌅 早间 | 你以为的 bug,其实是 feature。 | 程序员的自我修养 |
 | 126 | 2026-11-11 | 🌆 午间 | Stay hungry, stay foolish. | Steve Jobs |
 | 127 | 2026-11-12 | 🌆 午间 | Talk is cheap. Show me the code. | Linus Torvalds |
+| 128 | 2026-11-13 | 🌅 早间 | 任何傻瓜都能写出计算机能懂的代码,好的程序员写的是人能懂的代码。 | Martin Fowler |
