@@ -495,5 +495,12 @@
     "current_streak": 71,
     "longest_streak": 71,
     "today": 1
+  },
+  {
+    "date": "2026-11-18",
+    "total_last_year": 295,
+    "current_streak": 71,
+    "longest_streak": 71,
+    "today": 0
   }
 ]
