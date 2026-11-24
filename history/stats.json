@@ -537,5 +537,12 @@
     "current_streak": 76,
     "longest_streak": 76,
     "today": 0
+  },
+  {
+    "date": "2026-11-24",
+    "total_last_year": 320,
+    "current_streak": 78,
+    "longest_streak": 78,
+    "today": 1
   }
 ]
